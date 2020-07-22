@@ -1,0 +1,32 @@
+---
+        - name: "deployer docker"
+          hosts: localhost
+          connection: local
+          become: true
+          become_user: root
+
+          tasks:
+           - name: 'ajouter repository'
+             shell:
+              cmd: dnf config-manager  --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+
+           - name: "install docker"
+             dnf:
+              name: "docker-ce"
+                     #cmd: dnf install --nobest docker-ce -y
+
+           - name: "start docker"
+             service:
+              name: docker
+              state: started
+
+           - name: "restart firewall"
+             service:
+              name: firewalld
+              state: reloaded
+
+
+              
+
+
+
