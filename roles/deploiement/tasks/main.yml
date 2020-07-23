@@ -1,0 +1,13 @@
+---
+
+           - name: "install docker"
+             yum:
+              name: ["docker-ce","docker-ce-cli",]
+              state: present
+             notify: start docker
+              
+           
+
+
+
+

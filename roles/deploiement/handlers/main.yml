@@ -1,0 +1,19 @@
+---
+# handlers file for preparation---
+
+        - name : "reload firewalld"
+          service:
+            name: firewalld
+            state: reloaded
+
+
+
+        - name: "start docker"
+          service:
+           name: docker 
+           state: started
+
+        - name: "start firewalld"
+          service:
+           name: firewalld
+           state: started
