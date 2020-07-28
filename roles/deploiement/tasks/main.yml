@@ -4,13 +4,32 @@
              yum:
               name: ["docker-ce","docker-ce-cli",]
               state: present
-             notify: start docker
-              
-           - name: "change path"
-             replace:
-              path: /lib/systemd/system/docker.service
-              regexp: "ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock"
-              replace: "ExecStart=/usr/bin/docker -g /usr/lib/docker -H fd:// --containerd=/run/containerd/containerd.sock"
+             notify: stop docker
+           
+           - name: "check daemon.json"
+             stat:
+              path: "/etc/docker/"
+             register: dir
+           
+
+           - name: "creation daemon.json "
+             file:
+              path: "/etc/docker/daemon.json"
+              state: touch
+              mode: 0755
+             when:  dir.stats.isdir is not defined 
+
+           - name: "copy direcory"
+             copy:
+              dest: "{{directory_docker}}"
+              src: /usr/lib/docker/
+              remote_src: yes
+
+           
+           - name: "change path "
+             lineinfile:
+              path: /etc/docker/daemon.json
+              line: "{\"data-root\":\"{{directory_docker}}\"}"
              notify: stop docker
              notify: reload daemon
              notify: start docker

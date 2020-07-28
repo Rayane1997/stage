@@ -3,5 +3,5 @@
 
 
 
-        directory_docker: /var/lib/docker
+        mount_on: /
         espace_disk: 1

@@ -14,7 +14,7 @@
         - name: "stop docker"
           service:
            name: docker
-           state: stoped
+           state: stopped
 
         - name: "reload daemon"
           systemd:

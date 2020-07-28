@@ -3,23 +3,7 @@
              assert:
               success_msg: size(/var/lib/docker) > 1GB
               that:
-                      #( 1*(1024**3)) < (ansible_mounts | selectattr( "mount","eq",""{{directory_docker}}"") | list)[0].size_available
-
-               (1*(1024**3)) < (ansible_mounts | selectattr( "mount","eq","/") | list)[0].size_available
-        
-
-           - name: "test"
-             stat:
-              path: /var/lib/docker
-             register: result
-        
-           - debug:
-              msg: "size:{{result.stat.size}}"
-
-           - debug:
-              msg: true 
-             when: "'/var/lib/docker' not in ansible_mounts"
-
+               ( {{ espace_disk | int }} *(1024**3)) < (ansible_mounts | selectattr( "mount","eq","{{mount_on}}") | list)[0].size_available
 
            - name: "telecharger paquet necessaire"
              yum:
@@ -27,9 +11,9 @@
 
            - name: 'ajouter repository'
              yum_repository:
-              name: "Docker CE Stable - $baseacrh"
-              description: "docker"
-              baseurl: "https://download.docker.com/linux/centos/docker-ce.repo/7/$basearch/stable"
+              description: "docker-ce-stable"
+              name: docker-ce  
+              baseurl: "https://download.docker.com/linux/centos/7/x86_64/stable"
               gpgkey: "https://download.docker.com/linux/centos/gpg"
 
            - name: "telecharger paquet"
