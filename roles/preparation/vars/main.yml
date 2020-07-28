@@ -1,2 +1,7 @@
 ---
 # vars file for preparation
+
+
+
+        directory_docker: /var/lib/docker
+        espace_disk: 1

@@ -6,12 +6,20 @@
             name: firewalld
             state: reloaded
 
-
-
         - name: "start docker"
           service:
            name: docker 
            state: started
+       
+        - name: "stop docker"
+          service:
+           name: docker
+           state: stoped
+
+        - name: "reload daemon"
+          systemd:
+           daemond_reload: yes
+           
 
         - name: "start firewalld"
           service:

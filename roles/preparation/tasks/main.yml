@@ -1,4 +1,29 @@
 ---
+           - name: validate partitions
+             assert:
+              success_msg: size(/var/lib/docker) > 1GB
+              that:
+                      #( 1*(1024**3)) < (ansible_mounts | selectattr( "mount","eq",""{{directory_docker}}"") | list)[0].size_available
+
+               (1*(1024**3)) < (ansible_mounts | selectattr( "mount","eq","/") | list)[0].size_available
+        
+
+           - name: "test"
+             stat:
+              path: /var/lib/docker
+             register: result
+        
+           - debug:
+              msg: "size:{{result.stat.size}}"
+
+           - debug:
+              msg: true 
+             when: "'/var/lib/docker' not in ansible_mounts"
+
+
+           - name: "telecharger paquet necessaire"
+             yum:
+              name: [ "python3","firewalld","vim" ]
 
            - name: 'ajouter repository'
              yum_repository:
@@ -12,9 +37,6 @@
               name: https://download.docker.com/linux/centos/7/x86_64/stable/Packages/containerd.io-1.2.6-3.3.el7.x86_64.rpm
               state: present
 
-           - name: "telecharger paquet necessaire"
-             yum:
-              name: [ "python3","firewalld","vim" ]
 
 
 

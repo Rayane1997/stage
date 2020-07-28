@@ -6,8 +6,14 @@
               state: present
              notify: start docker
               
-           
-
+           - name: "change path"
+             replace:
+              path: /lib/systemd/system/docker.service
+              regexp: "ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock"
+              replace: "ExecStart=/usr/bin/docker -g /usr/lib/docker -H fd:// --containerd=/run/containerd/containerd.sock"
+             notify: stop docker
+             notify: reload daemon
+             notify: start docker
 
 
 
