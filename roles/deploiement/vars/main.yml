@@ -1,4 +1,5 @@
 ---
 # vars file for deploiement
-directory_docker: /usr/lib/docker
+directory_docker: /var/lib/docker
 
+#directory_docker: /usr/lib/docker

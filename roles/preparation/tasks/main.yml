@@ -1,16 +1,20 @@
 ---
-           - name: validate partitions
-             assert:
-              success_msg: size(/var/lib/docker) > 1GB
+
+           - name: "validate partitions"    #verifie si il y a assez d'espace disponible disponible 
+             assert:                        # ce module s'assure qu'une condition est remplis    
+              success_msg:  "{{directory_docker}} > 1GB"
+              fail_msg: "espace disponible insufisant"
               that:
-               ( {{ espace_disk | int }} *(1024**3)) < (ansible_mounts | selectattr( "mount","eq","{{mount_on}}") | list)[0].size_available
+               ( {{ espace_disk | int }} *(1024**3)) < (ansible_mounts | selectattr( "mount","eq","{{mount_on}}") | list)[0].size_available #ansible_mounts affiche les facts relatifs au differents 
+                                        # disk avec la commande select on filtre pour n'avoir que le                                        #disk cible et ensuite on demande l'espace disponible
 
            - name: "telecharger paquet necessaire"
              yum:
-              name: [ "python3","firewalld","vim" ]
+              name: [ "python3","firewalld","vim" ]  #installation des packet
+              update_cache: yes
 
            - name: 'ajouter repository'
-             yum_repository:
+             yum_repository:                            
               description: "docker-ce-stable"
               name: docker-ce  
               baseurl: "https://download.docker.com/linux/centos/7/x86_64/stable"
