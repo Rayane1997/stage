@@ -17,8 +17,8 @@
 
            - name: 'ajouter repository'
              yum_repository:                            
-              description: "docker-ce-stable"
-              name: docker-ce  
+              description: "Docker Ce Stable - x86_64 "
+              name: docker-ce-stable  
               baseurl: "https://download.docker.com/linux/centos/7/x86_64/stable"
               gpgkey: "https://download.docker.com/linux/centos/gpg"
 
