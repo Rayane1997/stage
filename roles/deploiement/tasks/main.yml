@@ -10,7 +10,13 @@
              stat:                      #  passer par un fichier daemon.json pour cela il faut 
               path: "/etc/docker/"      #d'abord utiliser le module stat qui recolte les donnees sur
              register: dir              #la directory 
-           
+          
+           - name: "create dir"
+             file:
+              path: "/etc/docker"
+              state: directory
+              mode: 0755
+             when:  dir.stats.isdir is not defined #on test si la directory exist
 
            - name: "creation daemon.json "     
              file:
