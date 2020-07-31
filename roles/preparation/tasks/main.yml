@@ -21,11 +21,13 @@
               name: docker-ce-stable  
               baseurl: "https://download.docker.com/linux/centos/7/x86_64/stable"
               gpgkey: "https://download.docker.com/linux/centos/gpg"
+              gpgcheck: 1
+              enabled: 1
 
-           - name: "telecharger paquet"
-             yum:
-              name: https://download.docker.com/linux/centos/7/x86_64/stable/Packages/containerd.io-1.2.6-3.3.el7.x86_64.rpm
-              state: present
+              # - name: "telecharger paquet"
+              #yum:
+              #name: https://download.docker.com/linux/centos/7/x86_64/stable/Packages/containerd.io-1.2.0-3.el7.x86_64.rpm
+              #state: present
 
 
 

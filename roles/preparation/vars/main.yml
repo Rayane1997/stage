@@ -5,3 +5,4 @@
 
         mount_on: /
         espace_disk: 1
+        directory_docker: /usr/lib/docker

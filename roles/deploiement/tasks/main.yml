@@ -1,45 +1,27 @@
 ---
 
-           - name: "install docker"
-             yum:
-              name: ["docker-ce","docker-ce-cli"] #instalation de docker et du cli 
-              state: present
-             notify: stop docker
            
-           - name: "check daemon.json"  #pour changer la director ou sont garder les images il faut 
-             stat:                      #  passer par un fichier daemon.json pour cela il faut 
-              path: "/etc/docker/"      #d'abord utiliser le module stat qui recolte les donnees sur
-             register: dir              #la directory 
-          
            - name: "create dir"
              file:
               path: "/etc/docker"
               state: directory
               mode: 0755
-             when:  dir.stats.isdir is not defined #on test si la directory exist
+
 
            - name: "creation daemon.json "     
              file:
               path: "/etc/docker/daemon.json"
               state: touch                         #on cree le fichier
-              mode: 0755                           #on modfie les droit
-             when:  dir.stats.isdir is not defined #on test si la directory exist
 
-           - name: "copy direcory"                 
-             copy:
-              dest: "{{directory_docker}}"       #on copie la diectory docker vers la nouvelle
-              src: /var/lib/docker/
-              remote_src: yes                    #on precise que les deux dossier sont sur la
-                                                 #machine hote  
-              #when:  ( {{directory_docker}}  in "(/var/lib/docker)" ) 
-           
            - name: "change path "
              lineinfile:
               path: /etc/docker/daemon.json                    #on modifie le document en y inserant
-              line: "{\"data-root\":\"{{directory_docker}}\"}" # la nouvelle directory
+              line: ' { "data-root" : "{{directory_docker}}" }' # la nouvelle directory
+
+
+           - name: "install docker"
+             shell: "yum install --nobest docker-ce docker-ce-cli containerd.io -y " #instalation de docker et du cli 
              notify: stop docker
              notify: reload daemon
              notify: start docker
-
-
 
