@@ -19,8 +19,10 @@
               line: ' { "data-root" : "{{directory_docker}}" }' # la nouvelle directory
 
 
-           - name: "install docker"
-             shell: "yum install --nobest docker-ce docker-ce-cli containerd.io -y " #instalation de docker et du cli 
+           - name: install docker
+             yum:
+              name: [docker-ce, docker-ce-cli]
+              state: present
              notify: stop docker
              notify: reload daemon
              notify: start docker
