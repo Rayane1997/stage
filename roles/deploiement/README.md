@@ -14,6 +14,10 @@ Role Variables
 |----------------------|----------------|-----------------------------------------------------------------|
 |  directory_docker: | /var/lib/docker  |  specifies the docker directory specifies the docker directory  |
  
+Dependencies
+------------
+
+roles: preparation
 
 Example Playbook
 ----------------
