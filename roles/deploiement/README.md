@@ -10,8 +10,10 @@ Requirements
 
 Role Variables
 --------------
-
-
+|  Variable | Default  |  Comments |  
+|----------------------|----------------|-----------------------------------------------------------------|
+|  directory_docker: | /var/lib/docker  |  specifies the docker directory specifies the docker directory  |
+ 
 
 Example Playbook
 ----------------
