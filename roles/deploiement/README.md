@@ -1,7 +1,7 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+this roles install the containerd.io packet neccessaey to install docker it also check if there is enough space because images can rapidly takes a lot of spaces.
 
 Requirements
 ------------
@@ -27,7 +27,7 @@ Including an example of how to use your role (for instance, with variables passe
       roles:
          - { role: username.rolename, x: 42 }
 
-License
+Source
 -------
 
 BSD
