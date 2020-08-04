@@ -31,5 +31,7 @@
 
 
 
-
-
+                #source: 
+                #https://docs.docker.com/engine/install/centos
+                #https://linuxconfig.org/how-to-install-docker-in-rhel-8
+                #https://docs.ansible.com/

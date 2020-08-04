@@ -10,7 +10,7 @@
 
            - name: "creation daemon.json "     
              file:
-              path: "/etc/docker/daemon.json"
+              path: "/etc/docker/daemon.json"      # on donne le path
               state: touch                         #on cree le fichier
 
            - name: "change path "
@@ -23,7 +23,10 @@
              yum:
               name: [docker-ce, docker-ce-cli]
               state: present
-             notify: stop docker
              notify: reload daemon
              notify: start docker
 
+
+
+                #source:
+                #https://medium.com/developer-space/how-to-change-data-docker-folder-configuration
