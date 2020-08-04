@@ -11,8 +11,8 @@ Role Variables
 --------------
 |  Variable | Default  |  Comments |  
 |----------------------|----------------|-----------------------------------------------------------------|
-| mount_on  | / |  where the directory docker is mount  |
-| espace_disk | 1   |  minimum availible space in GB for docker to be installed  |
+| mount_on  |    / |  where the directory docker is mount  |
+| espace_disk |     1   |  minimum availible space in GB for docker to be installed  |
 
 
 
