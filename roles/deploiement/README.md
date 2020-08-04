@@ -17,7 +17,7 @@ Role Variables
 Dependencies
 ------------
 
-roles: preparation
+roles : preparation
 
 Example Playbook
 ----------------
