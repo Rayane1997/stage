@@ -2,7 +2,7 @@
 
         - name: " ==docker distribution"
           yum:
-                name: [ httpd-tools]
+                name: [ httpd-tools, firewalld, docker-distribution]
                 state: present
 
         - name: "create privatekey"
@@ -24,4 +24,22 @@
            privatekey_path: /etc/pki/tls/private/registryy.key
            path: /etc/pki/tls/registryy.crt
            csr_path: /etc/pki/tls/registryy.csr 
-        
+       
+        - name: " create auth"
+          htpasswd:
+           path: /etc/docker-distribution/dockerpasswd
+           create: yes
+           state: present
+           name: dock
+           password: "{{passwd}}"
+
+       - name: "modi conf"
+         copy:
+          src: /home/rayane/stage/conf.yml
+          dest: /etc/docker-distribution/dockerpasswd 
+
+      - name: "set firewall"
+        firewalld:
+         port: 5000/tcp
+         permanent: true
+         state: enabled
