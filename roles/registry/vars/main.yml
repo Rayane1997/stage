@@ -1,0 +1,5 @@
+---
+
+# vars file for registre
+
+        common_name_registry: docker-distribution

@@ -1,0 +1,27 @@
+---
+
+        - name: " ==docker distribution"
+          yum:
+                name: [ httpd-tools]
+                state: present
+
+        - name: "create privatekey"
+          openssl_privatekey:
+           path: /etc/pki/tls/private/registryy.key
+           size: 4096
+
+        - name: "create " 
+          openssl_csr:
+           path: /etc/pki/tls/registryy.csr 
+           privatekey_path: /etc/pki/tls/private/registryy.key
+           country_name: BE
+           organization_name: stage
+           common_name: "{{common_name_registry}}"       
+
+        - name: " create selfsigned CA "
+          openssl_certificate:
+           provider: selfsigned
+           privatekey_path: /etc/pki/tls/private/registryy.key
+           path: /etc/pki/tls/registryy.crt
+           csr_path: /etc/pki/tls/registryy.csr 
+        

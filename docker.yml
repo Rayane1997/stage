@@ -5,8 +5,10 @@
           become: true
           become_user: root
           roles:
-           - preparation
-           - deploiement
+                  #           - preparation
+                  #
+                  #           - deploiement
+                - registry
 
 
 
