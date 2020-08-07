@@ -7,7 +7,7 @@
          
       - name: Create a directory 
         file:
-         path: '/etc/docker/certs.d/docker-distribution-01.example.com:5000'
+         path: '/etc/docker/certs.d/docker-distributions:5000'
          state: directory
          mode: '0755'
          
