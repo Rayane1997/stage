@@ -1,2 +1,15 @@
 ---
-# tasks file for registry-host
+
+      - name: " hosts"
+        lineinfile:
+         path: /etc/hosts
+         line ' 192.168.234.54 docker-distributions'
+         
+      - name: Create a directory 
+        file:
+         path: '/etc/docker/certs.d/docker-distribution-01.example.com:5000'
+         state: directory
+         mode: '0755'
+         
+      - name: copy file
+        shell: scp root@docker-distribution-01:/etc/pki/tls/registry.crt /etc/docker/certs.d/docker-distribution-01.example.com\:5000/
