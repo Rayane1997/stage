@@ -2,7 +2,7 @@
 
         - name: " ==docker distribution"
           yum:
-           name: [ firewalld, docker-distribution,python2-passlib]
+           name: [ python, firewalld, docker-distribution,python2-passlib, py-bcrypt]
            state: present
 
         - name: "create privatekey"
@@ -34,10 +34,10 @@
            password: "{{passwd}}"
            crypt_scheme: bcrypt
 
-#       - name: "modi conf"
-#         copy:
-#           src: /home/rayane/stage/config.yml
-#            dest: /etc/docker-distribution/registry/config.yml
+        - name: "modi conf"
+          copy:
+           src: /home/rayane/stage/config.yml
+           dest: /etc/docker-distribution/registry/config.yml
 
 #        - name: "auth"
 #          shell: htpasswd -c -b -B /etc/docker-distribution/dockerpasswd dock rayane1997
