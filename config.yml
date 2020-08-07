@@ -8,12 +8,12 @@ storage:
     filesystem:
         rootdirectory: /var/lib/registry
 http:
-    addr: 192.168.234.179:5000
+    addr: :5000
     tls:
-        certificate: /etc/pki/tls/registry.crt
-        key: /etc/pki/tls/private/registry.key
+        certificate: /etc/pki/tls/registryy.crt
+        key: /etc/pki/tls/private/registryy.key
 auth:
     htpasswd:
-             path: /etc/docker-distribution/dockerpsswd
-             realm: docker-distribution
+             path: /etc/docker-distribution/dockerpasswd
+             realm: docker-distributions
                   

@@ -2,8 +2,8 @@
 
         - name: " ==docker distribution"
           yum:
-                name: [ httpd-tools, firewalld, docker-distribution]
-                state: present
+           name: [ firewalld, docker-distribution,python2-passlib]
+           state: present
 
         - name: "create privatekey"
           openssl_privatekey:
@@ -30,16 +30,20 @@
            path: /etc/docker-distribution/dockerpasswd
            create: yes
            state: present
-           name: dock
+           name: "dock"
            password: "{{passwd}}"
+           crypt_scheme: bcrypt
 
-       - name: "modi conf"
-         copy:
-          src: /home/rayane/stage/conf.yml
-          dest: /etc/docker-distribution/dockerpasswd 
+#       - name: "modi conf"
+#         copy:
+#           src: /home/rayane/stage/config.yml
+#            dest: /etc/docker-distribution/registry/config.yml
 
-      - name: "set firewall"
-        firewalld:
-         port: 5000/tcp
-         permanent: true
-         state: enabled
+#        - name: "auth"
+#          shell: htpasswd -c -b -B /etc/docker-distribution/dockerpasswd dock rayane1997
+
+        - name: "set firewall"
+          firewalld:
+           port: 5000/tcp
+           permanent: true
+           state: enabled
