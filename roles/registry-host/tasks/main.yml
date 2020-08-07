@@ -3,7 +3,7 @@
       - name: " hosts"
         lineinfile:
          path: /etc/hosts
-         line ' 192.168.234.54 docker-distributions'
+         line ' "{{ip_registry}}" docker-distributions'
          
       - name: Create a directory 
         file:
