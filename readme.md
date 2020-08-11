@@ -12,7 +12,7 @@ Supports only centos and redhat operating systems
 
 
 Requirement
-============
+------------
 ansible connect to remote host in ssh. To be able to use the ansible script you need to create a private and a public key , you can use the ssh-keygen command to do so. when the both key are created you'll need to copy the public key on the remote host. My script connect as root so be careful to copy it as root when you use the ssh-copy-id.
 
 In the hosts file add the ip addresses of the remote hosts ,you have two posibilieties:
