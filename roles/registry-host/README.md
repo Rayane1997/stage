@@ -1,12 +1,12 @@
-Role Name
+Registry
 =========
+This role install and configure the docker-distribution. docker-distribution is only availinle on centos 7. So before trying to install the packages we first check if the versions of the os is a centos 7.  We then install the required packages. You're not forced to create a self signed certificate to have access to your registry. Adding this to the docker daemon { "insecure-registries" : ["myregistrydomain.com:5000"]} let . here we'll create the self-signed certificate be carreful that the common name match exactly the name of the hosts machines.
 
-A brief description of the role goes here.
 
 Requirements
 ------------
+py-brcipt is the only supported encription for http auth. py-bcrypt is an password hashing algorithm.
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
 
 Role Variables
 --------------
@@ -27,12 +27,9 @@ Including an example of how to use your role (for instance, with variables passe
       roles:
          - { role: username.rolename, x: 42 }
 
-License
--------
-
-BSD
-
-Author Information
+source
 ------------------
+
+https://www.centlinux.com/2019/04/configure-secure-registry-docker-distribution-centos-7.html
 
 An optional section for the role authors to include contact information, or a website (HTML is not allowed).
