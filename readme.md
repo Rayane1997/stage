@@ -25,15 +25,20 @@ In the hosts file add the ip address of the remote hosts you have two posibiliet
 Example 
 ----------------
 
-Including an example of how to use the ssh-keygen ans ssh :
+ example of how to use the ssh-keygen ans ssh :
 
     - ssh-keygen -t rsa 
     - ssh-copy-id root@ip_hosts
     
-Including an example of the hosts file :
+ example of hosts file :
     
     [registry]
     registry_ip or common_name 
     [docker]
     dockerVM_ip or common_name 
+    
+ example of command to run the script :
+ 
+    - ansible-playbook docker.yml
+    
 
