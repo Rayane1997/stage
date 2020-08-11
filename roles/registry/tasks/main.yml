@@ -13,36 +13,36 @@
 
         - name: "create privatekey"
           openssl_privatekey:
-           path: /etc/pki/tls/private/registryy.key
+           path: "{{path_prvkey}}"
            size: 4096
 
         - name: "create " 
           openssl_csr:
-           path: /etc/pki/tls/registryy.csr 
-           privatekey_path: /etc/pki/tls/private/registryy.key
+           path: "{{path_csr}}" 
+           privatekey_path: "{{path_prvkey}}"
            country_name: BE
-           organization_name: stage
+           organization_name: "{{name_org}}"
            common_name: "{{common_name_registry}}"       
 
         - name: " create selfsigned CA "
           openssl_certificate:
            provider: selfsigned
-           privatekey_path: /etc/pki/tls/private/registryy.key
-           path: /etc/pki/tls/registryy.crt
-           csr_path: /etc/pki/tls/registryy.csr 
+           privatekey_path: "{{path_prvkey}}"
+           path: "{{path_cert}}"
+           csr_path: "{{path_csr}}"
        
         - name: " create auth"
           htpasswd:
-           path: /etc/docker-distribution/dockerpasswd
+           path: "{{path_auth}}"
            create: yes
            state: present
-           name: "dock"
+           name: "{{name_auth}}"
            password: "{{passwd}}"
            crypt_scheme: bcrypt
 
         - name: "modi conf"
           copy:
-           src: /home/rayane/stage/config.yml
+           src: "{{config_file}}"
            dest: /etc/docker-distribution/registry/config.yml
 
 
