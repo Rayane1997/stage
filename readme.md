@@ -19,7 +19,6 @@ In the hosts file add the ip address of the remote hosts you have two posibiliet
     - create an hosts file in the same directory as the docker.yml (main script) but you'll have to add -i hosts when you run your playbook  
       ansible-playbook docker.yml -i hosts
     - add on the hosts file located /etc/ansible/hosts the ip addresses
-    
     note : you need yo use inventory groups the docker-distribution(private-registry) need to be under the registry and the docker machine 
 
 
@@ -31,5 +30,10 @@ Including an example of how to use the ssh-keygen ans ssh :
     - ssh-keygen -t rsa 
     - ssh-copy-id root@ip_hosts
     
-Including an example of how to hosts file :
+Including an example of the hosts file :
+    
+    [registry]
+    registry_ip or common_name 
+    [docker]
+    dockerVM_ip or common_name 
 
