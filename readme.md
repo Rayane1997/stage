@@ -22,5 +22,5 @@ Example
 Including an example of how to use the ssh-keygen ans ssh :
 
     - ssh-keygen -t rsa 
-    - ssh-copy-id root@iphosts
+    - ssh-copy-id root@ip_hosts
 
