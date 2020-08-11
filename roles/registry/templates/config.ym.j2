@@ -1,0 +1,19 @@
+version: 0.1
+log:
+  fields:
+    service: registry
+storage:
+    cache:
+        layerinfo: inmemory
+    filesystem:
+        rootdirectory: /var/lib/registry
+http:
+    addr: {{ ansible_default_ipv4.address }}:5000
+    tls:
+        certificate: {{ path_prvkey }}
+        key: {{ path_cert }}
+auth:
+    htpasswd:
+             path: {{ path_auth }}
+             realm: {{ common_name_registry }}
+                  
