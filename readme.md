@@ -1,12 +1,12 @@
 Docker deployement with ansible
 =================================
 
-This project provides the following :
+This project provides the following roles :
 
-+ Installation of docker on remote virtual machine/servers
-+ Installation of docker engine
-+ Change the docker directory
-+ configuration of a private registry 
++ preparation : Installation of docker on remote virtual machine/servers
++ deploiement : Installation of docker engineChange the docker directory
++ registry : configuration of a private registry 
++ registry_hosts : configure the hosts to comunicate with the docker-distribution
 
 Supports only centos and redhat operating systems
 
@@ -20,7 +20,6 @@ In the hosts file add the ip addresses of the remote hosts ,you have two posibil
       ansible-playbook docker.yml -i hosts
     - add on the hosts file located /etc/ansible/hosts the ip addresses
 note : you need to use inventory groups, the docker-distribution(private-registry) need to be under the registry group and the docker machine under docker group
-
 
 Example 
 ----------------
