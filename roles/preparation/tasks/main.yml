@@ -3,7 +3,7 @@
            - name: "validate partitions"    #verifie si il y a assez d'espace disponible disponible 
              assert:                        # ce module s'assure qu'une condition est remplis    
               success_msg:  "{{directory_docker}} > {{espace_disk}}GB"
-              fail_msg: "espace disponible insufisant"
+              fail_msg: "disk space insufisient"
               that:
                ( {{ espace_disk | int }} *(1024**3)) < (ansible_mounts | selectattr( "mount","eq",item) |map(attribute= "size_available") | list )[0] #affiche les facts relatifs au differents 
              with_items: "{{mount_on}}" # disk avec la commande select on filtre pour n'avoir que le
