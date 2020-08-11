@@ -1,4 +1,10 @@
 ---
+        - name: "centos7==installation"
+          assert:
+           success_msg: "proceed to installation "
+           fail_msg: "this vm is not an centos 7 docker-distribution is not availible on centos8"
+           that:
+            ({{ansible_distribution_major_version}} == 7 )
 
         - name: " ==docker distribution"
           yum:
@@ -39,11 +45,11 @@
            src: /home/rayane/stage/config.yml
            dest: /etc/docker-distribution/registry/config.yml
 
-#        - name: "auth"
-#          shell: htpasswd -c -b -B /etc/docker-distribution/dockerpasswd dock rayane1997
 
         - name: "set firewall"
           firewalld:
            port: 5000/tcp
            permanent: true
            state: enabled
+           #          notify: start firewall
+           #          notify: start docker-distribution

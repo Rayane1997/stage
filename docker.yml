@@ -1,14 +1,13 @@
 ---
         - name: "deployer docker"
-          hosts: localhost
-          connection: local
+          hosts: registry
+          user: root
           become: true
-          become_user: root
           roles:
-                  #           - preparation
-                  #
-                  #           - deploiement
-                - registry
+                  # - preparation
+                  
+                               # - deploiement
+                   - registry
 
 
 

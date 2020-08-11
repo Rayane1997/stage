@@ -4,4 +4,10 @@
 
         common_name_registry: docker-distributions
         passwd: Rayane1997
+        path_prvkey: /etc/pki/tls/private/registry.key
+        path_csr: /etc/pki/tls/registry.csr
+        path_cert: /etc/pki/tls/registry.crt
+        path_auth: /etc/docker-distribution/dockerpasswd
+        config_file: /home/rayane/stage/config.yml
+        name_org: stage
 
