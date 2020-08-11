@@ -10,4 +10,6 @@
         path_auth: /etc/docker-distribution/dockerpasswd
         config_file: /home/rayane/stage/config.yml
         name_org: stage
+        user_auth: dock
+        ip_registry: 192.168.234.54
 

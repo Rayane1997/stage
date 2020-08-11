@@ -36,13 +36,13 @@
            path: "{{path_auth}}"
            create: yes
            state: present
-           name: "{{name_auth}}"
+           name: "{{user_auth}}"
            password: "{{passwd}}"
            crypt_scheme: bcrypt
 
         - name: "modi conf"
-          copy:
-           src: "{{config_file}}"
+          template:
+           src: config.ym.j2
            dest: /etc/docker-distribution/registry/config.yml
 
 
