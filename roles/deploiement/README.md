@@ -1,32 +1,21 @@
-Preparation
+deploiements
 =========
 
-this roles install the containerd.io packet neccessaey to install docker it also check if there is enough space because images can rapidly takes a lot of spaces.
+ to install docker we first want the docker directory to be installed where we want to. In order to do that we have to modified the docker daemon so he knows whete to install itself. since docker is not installed we still don't have any reportory docker. the first step is to create the directory then we creqte the daemon file and finaly we had { "data-root" : "{{directory_docker}}" } this will tell to docker daemon to install itself in our docker directory and not the /var/lib/docker/
 
-Requirements
-------------
-
-?
 
 Role Variables
 --------------
 |  Variable | Default  |  Comments |  
 |----------------------|----------------|-----------------------------------------------------------------|
-|  directory_docker: | /var/lib/docker  |  specifies the docker directory specifies the docker directory  |
+|  directory_docker: | /var/lib/docker  |  specifiy the docker directory |
  
 Dependencies
 ------------
 
 roles : preparation
 
-Example Playbook
-----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
 
 Source
 -------
