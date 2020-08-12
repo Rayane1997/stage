@@ -3,7 +3,8 @@
       - name: " hosts"
         lineinfile:
          path: /etc/hosts
-         line ' "{{ip_registry}}" docker-distributions'
+         line: '{{ip_registry}}:5000 docker-distributions'
+        when: "{{ dns }}"
          
       - name: Create a directory 
         file:
@@ -12,4 +13,6 @@
          mode: '0755'
          
       - name: copy file
-        shell: scp root@docker-distribution-01:/etc/pki/tls/registry.crt /etc/docker/certs.d/docker-distribution-01.example.com\:5000/
+        copy:
+         src: registry.crt
+         dest: '/etc/docker/certs.d/docker-distributions:5000/registry.crt '

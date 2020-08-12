@@ -1,38 +1,45 @@
-Role Name
+Registry
 =========
 
-A brief description of the role goes here.
+This role install and configure a docker-distribution. Docker-distribution is only availible on centos 7. So before trying to install the packages we first ensure that the centos versions si 7.  We then install the required packages. You're not forced to create a self signed certificate to have access to your registry. Adding this to the docker daemon { "insecure-registries" : ["myregistrydomain.com:5000"]} will be enough but that's really not secure. Indeed by default docker use https to connect to docker registry. but with the insecure registry http is used. This eliminate the need of CA signed certificate for internal use or to trust self signed certificate in all docker nodes. Here we'll create the self-signed certificate be carreful that the common name match exactly your vm's hostname. To secure even more the registry you have the choice betweeen three authentification method : 1- htpasswd 2- silly 3- token
+Here i used htpasswd, htpasswd provides a simple authentication scheme that checks for the user credential hash in an htpasswd formatted file.
 
-Requirements
+the configuration file for the docker distribution is kept in the templates. finally the script set the firewall to let tcp communication on port 5000.
+
+note: the images must be kept in a dedicated volume
+
+Dependencies
 ------------
+Vm with docker installed to push and pull image
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Requirement
+------------
+py-brcipt is the only supported encription for http auth. py-bcrypt is an password hashing algorithm.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+|  Variable | Default  |  Comments |  
+|----------------------|----------------|-----------------------------------------------------------------|
+|common_name_registry| docker-distributions| common name for the self signed certificate |
+|name_org| stage| name of the organisation for the certificate|
+|path_prvkey| /etc/pki/tls/private/registry.key| path to the private key|
+|path_csr | /etc/pki/tls/registry.csr| path to the csr file |
+|path_cert | /etc/pki/tls/registry.crt | path to the certificate |
+|directory_registry| /var/lib/registry | directory where the image will be kept |
+|path_auth | /etc/docker-distribution/dockerpasswd | path to  the http authentification  file |
+|passwd| Rayane1997| password for htpasswd |
+|user_auth| dock| username for the authetification|
 
-Dependencies
-------------
+        
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
 
-Example Playbook
-----------------
-
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
-
-License
+Source
 -------
 
-BSD
+https://github.com/docker/distribution/blob/master/docs/configuration.md
 
-Author Information
-------------------
+https://www.centlinux.com/2019/04/configure-secure-registry-docker-distribution-centos-7.html
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+https://computingforgeeks.com/install-and-configure-docker-registry-on-centos-7/
+

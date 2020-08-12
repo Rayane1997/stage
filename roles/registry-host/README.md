@@ -1,22 +1,34 @@
 Registry
 =========
-This role install and configure the docker-distribution. docker-distribution is only availinle on centos 7. So before trying to install the packages we first check if the versions of the os is a centos 7.  We then install the required packages. You're not forced to create a self signed certificate to have access to your registry. Adding this to the docker daemon { "insecure-registries" : ["myregistrydomain.com:5000"]} let . here we'll create the self-signed certificate be carreful that the common name match exactly the name of the hosts machines.
+This role configure the docker VM to be able to communicate with the registry server. docker search the ceritificates unde the directory "/etc/docker/certs.d/registry_name:port/" .to make it work we need to create this directory and copy the certificates.if you have a dns server you can set the dns vars to false so ansible skip the first step. the first command add the ip address of the registry's hostname to the hosts.conf so you're not forced to write the ip address.
+
+once it all done we're going to install a http service within   to the docker registry using "docker login registry_name:5000"
 
 
 Requirements
 ------------
-py-brcipt is the only supported encription for http auth. py-bcrypt is an password hashing algorithm.
+
+docker installed
 
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+|  Variable | Default  |  Comments |  
+|----------------------|----------------|-----------------------------------------------------------------|
+|ip_registry|192.168.234.54| ip address of the registry server only necessary if the dns vars is set to true|
+|cert_name|registry.crt| name of the certificat|
+|dns|True|set to false if you have a dns server|
+
+ 
+
+
+
 
 Dependencies
 ------------
+registry role
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
 
 Example Playbook
 ----------------
@@ -32,4 +44,4 @@ source
 
 https://www.centlinux.com/2019/04/configure-secure-registry-docker-distribution-centos-7.html
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+

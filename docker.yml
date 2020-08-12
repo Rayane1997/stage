@@ -7,14 +7,14 @@
         - hosts: registry
           user: root
           roles:
-            - registry
+           - registry
             
         - hosts: docker
           user: root
           roles:
-            - preparation      
-            - deploiement
-              #- registry_hosts
+                  #- preparation      
+              #- deploiement
+              #- registry-host
 
 
 

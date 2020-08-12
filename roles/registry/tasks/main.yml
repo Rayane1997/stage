@@ -40,10 +40,10 @@
            password: "{{passwd}}"
            crypt_scheme: bcrypt
 
-        - name: "modi conf"
-          template:
-           src: config.ym.j2
-           dest: /etc/docker-distribution/registry/config.yml
+           #- name: "modi conf"
+          #template:
+                  #src: config.yml.j2
+           # dest: /etc/docker-distribution/registry/config.yml
 
 
         - name: "set firewall"
@@ -53,3 +53,10 @@
            state: enabled
            #          notify: start firewall
            #          notify: start docker-distribution
+
+
+        - name: "copy certificate"
+          fetch:
+           src: "{{path_cert}}"
+           dest: roles/registry-host/files/
+           flat: yes
