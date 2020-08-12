@@ -14,7 +14,7 @@
           roles:
                   #- preparation      
               #- deploiement
-              #- registry-host
+              - registry-host
 
 
 
