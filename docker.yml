@@ -1,17 +1,20 @@
 ---
         - name: "deployer docker"
           user: root
-          #become: true
+          become: true
+          hosts: all
           
         - hosts: registry
+          user: root
           roles:
             - registry
             
-        - hosts: docker  
+        - hosts: docker
+          user: root
           roles:
             - preparation      
             - deploiement
-            - registry_hosts
+              #- registry_hosts
 
 
 
