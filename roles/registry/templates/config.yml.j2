@@ -10,8 +10,8 @@ storage:
 http:
     addr: {{ ansible_default_ipv4.address }}:5000
     tls:
-        certificate: {{ path_prvkey }}
-        key: {{ path_cert }}
+        certificate: {{ path_cert }}
+        key: {{ path_prvkey }}
 auth:
     htpasswd:
              path: {{ path_auth }}

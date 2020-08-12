@@ -40,10 +40,10 @@
            password: "{{passwd}}"
            crypt_scheme: bcrypt
 
-           #- name: "modi conf"
-          #template:
-                  #src: config.yml.j2
-           # dest: /etc/docker-distribution/registry/config.yml
+        - name: "modi conf"
+          template:
+            src: config.yml.j2
+            dest: /etc/docker-distribution/registry/config.yml
 
 
         - name: "set firewall"
