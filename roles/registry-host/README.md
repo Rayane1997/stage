@@ -26,7 +26,7 @@ Role Variables
 |----------------------|----------------|-----------------------------------------------------------------|
 |ip_registry|192.168.234.54| ip address of the registry server only necessary if the dns vars is set to true|
 |cert_name|registry.crt| name of the certificat|
-|dns|True|set to false if you have a dns server|
+|dns|True|set to false if you have a dns server. if true  it add the ip address of the registry server to the hosts file|
 
  
 
