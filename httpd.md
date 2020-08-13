@@ -17,9 +17,10 @@ save it as DockerFile
     - VOLUME /usr/docker
   
   
-once the docker file is created you can build your image using -t to named it.
+once the docker file is created you can build your image using -t to named it and create a personalized message in the index file.
   
   example  : 
+   - echo " bonjour , le conteneur est en marche"  > index.html
    -  Docker build -t http
    
 finally run a new container and link the port 80 of the container to a port in your vms
@@ -28,8 +29,9 @@ finally run a new container and link the port 80 of the container to a port in y
     - docker run -d -p 8080:80 http
     
  the -d parameters keep the container running in the background
+ 
+ to verify if your service is running you can do a curl http://ip_address:8080
    
-
 
 source
 ------------
