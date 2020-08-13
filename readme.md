@@ -10,6 +10,12 @@ This project provides the following roles :
 
 Supports only centos and redhat operating systems
 
+docker.yml : install docker
+
+access_registry.yml : configure the acces to the registry using registry-hosts
+
+registy.yml : configure the registry
+
 
 Requirement
 ------------
