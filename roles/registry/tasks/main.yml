@@ -51,9 +51,11 @@
            port: 5000/tcp
            permanent: true
            state: enabled
-          notify: start firewall
-          notify: start docker-distribution
 
+        - name: start docker
+          service:
+           name: docker-distribution 
+           state: started
 
         - name: "copy certificate"
           fetch:
