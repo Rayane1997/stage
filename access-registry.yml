@@ -1,0 +1,7 @@
+---
+        - name: "access registry"
+          user: root
+          become: true
+          hosts: docker
+          roles:
+              - registry-host
