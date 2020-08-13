@@ -20,12 +20,14 @@ save it as DockerFile
 once the docker file is created you can build your image using -t to named it and create a personalized message in the index file.
   
   example  : 
+  
    - echo " bonjour , le conteneur est en marche"  > index.html
    -  Docker build -t http
    
 finally run a new container and link the port 80 of the container to a port in your vms
    
    example  : 
+   
     - docker run -d -p 8080:80 http
     
  the -d parameters keep the container running in the background
