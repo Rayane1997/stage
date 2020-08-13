@@ -12,8 +12,8 @@
         - hosts: docker
           user: root
           roles:
-                  #- preparation      
-              #- deploiement
+              - preparation      
+              - deploiement
               - registry-host
 
 

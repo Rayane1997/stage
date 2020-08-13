@@ -3,7 +3,7 @@
       - name: " hosts"
         lineinfile:
          path: /etc/hosts
-         line: '{{ip_registry}}:5000 docker-distributions'
+         line: '{{ip_registry}} docker-distributions'
         when: "{{ dns }}"
          
       - name: Create a directory 

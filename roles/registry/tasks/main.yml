@@ -8,7 +8,7 @@
 
         - name: " ==docker distribution"
           yum:
-           name: [ python, firewalld, docker-distribution,python2-passlib, py-bcrypt]
+           name: [ epel-release, firewalld, docker-distribution,python2-passlib, httpd-tools, python-cryptography,py-bcrypt]
            state: present
 
         - name: "create privatekey"
@@ -51,8 +51,8 @@
            port: 5000/tcp
            permanent: true
            state: enabled
-           #          notify: start firewall
-           #          notify: start docker-distribution
+          notify: start firewall
+          notify: start docker-distribution
 
 
         - name: "copy certificate"
