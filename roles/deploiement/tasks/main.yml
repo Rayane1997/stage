@@ -23,8 +23,16 @@
              yum:
               name: [docker-ce, docker-ce-cli]
               state: present
-             notify: reload daemon
-             notify: start docker
+              
+           - name: reload daemon
+             systemd:
+              daemond_reload: yes
+           
+           - name: start docker
+             service:
+              name: docker 
+              state: started 
+            
 
 
 
