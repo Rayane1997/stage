@@ -1,0 +1,8 @@
+---
+        - name: "deployer docker"
+          user: root
+          become: true
+          hosts: registry
+          roles:
+           - registry
+          
