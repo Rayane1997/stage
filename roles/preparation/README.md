@@ -5,12 +5,14 @@ this roles prepare the remote machine for the installation of docker. First it c
 Best practice : put all the data in a seperate disk
 
 there is still no docker packages availible for centos 8 we need to download so we have to install from the repository. There's multiple packages :
+
 aarch64/
 armv7l/
 debug-aarch64/
 debug-x86_64/
 source/
 x86_64/
+
 here we use the X86_64 repodata 
 
 the installation of docker-io is necessary because it's a prerequisite to install docker we can install docker-io and docker in the same time only if we use the --nobest parameters not supported by ansible so we had to find a workaround. that's why we install the docker-io.rpm be always aware to have the latest versions.
