@@ -1,5 +1,5 @@
 ---
-        - name: "deployer docker"
+        - name: " docker distribution"
           user: root
           become: true
           hosts: registry
