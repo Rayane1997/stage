@@ -45,9 +45,11 @@ Including an exemple to push your image:
 
    + docker pull httpd
    + docker tag httpd myregistry.local:5000/httpd
-   + docker login docker-distribution-01.example.com:5000
+   + docker login docker-distribution-01.example.com:5000:
+   
     + name:
     + password:
+    
    + docker push myregistry.local:5000/httpd
    
 source
