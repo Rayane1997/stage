@@ -51,6 +51,11 @@
            port: 5000/tcp
            permanent: true
            state: enabled
+           
+        - name : "reload firewalld"
+          service:
+            name: firewalld
+            state: reloaded        
 
         - name: start docker
           service:
