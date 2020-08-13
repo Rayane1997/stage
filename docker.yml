@@ -2,19 +2,11 @@
         - name: "deployer docker"
           user: root
           become: true
-          hosts: all
-          
-        - hosts: registry
-          user: root
-          roles:
-           - registry
-            
-        - hosts: docker
-          user: root
+          hosts: docker
           roles:
               - preparation      
               - deploiement
-              - registry-host
+          
 
 
 
