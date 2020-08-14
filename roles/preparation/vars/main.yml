@@ -3,6 +3,6 @@
 
 
 
-        mount_on: /
+        mount_on: /data-docker
         espace_disk: 1
-        directory_docker: /usr/lib/docker
+        directory_docker: /data-docker/docker

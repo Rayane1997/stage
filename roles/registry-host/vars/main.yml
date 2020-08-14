@@ -1,5 +1,5 @@
 ---
 # vars file for registry-host
-ip_registry: 192.168.234.54
+ip_registry: 192.168.234.95
 cert_name: registry.crt
 dns: True
