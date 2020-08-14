@@ -40,9 +40,10 @@ modified the host file /etc/ansible/hosts , add the ip addresses of the remote h
     
     once all of that is done you can run the ansible playbook. there are 3.
     
-    docker.yml 
-    ----------
-    the first playbook to run is the docker.yml. the playbook install docker on the remote hosts but before you run the playbook check the vars. from here i will assume that you're already int the git directory named stage 
+docker.yml 
+----------
+
+the first playbook to run is the docker.yml. the playbook install docker on the remote hosts but before you run the playbook check the vars. from here i will assume that you're already int the git directory named stage 
     
 |  Variable | Default  |  Comments |  
 |----------------------|----------------|-----------------------------------------------------------------|
@@ -58,8 +59,8 @@ then you can run the playbook :
     
     - ansible-playbook docker.yml
 
- docker.yml 
- ----------
+registry.yml
+-----------
     
    
     
