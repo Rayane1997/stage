@@ -55,7 +55,7 @@ if neccesarry change the vars:
 
     - vi roles/preparation/vars/main.yml
     
-then you can run the playbook :
+finally you can run the playbook :
     
     - ansible-playbook docker.yml
 
