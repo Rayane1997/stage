@@ -28,7 +28,7 @@ Role Variables
 |passwd| XXXXXXX| password for htpasswd |
 |user_auth| XXXXXXX| username for the authetification|
 
-first you need to go complete the vars file and add all the non defined variable
+
 
         
 
