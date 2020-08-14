@@ -38,12 +38,14 @@ modified the host file /etc/ansible/hosts , add the ip addresses of the remote h
          [docker]
          dockerVM_ip or common_name
     
-    once all of that is done you can run the ansible playbook. there are 3.
+once all of that is done you can run the ansible playbook. there are 3.
     
+from here i will assume that you're already int the git directory named stage
+
 docker.yml 
 ----------
 
-the first playbook to run is the docker.yml. the playbook install docker on the remote hosts but before you run the playbook check the vars. from here i will assume that you're already int the git directory named stage 
+the first playbook to run is the docker.yml. the playbook install docker on the remote hosts but before you run the playbook check the vars.  
     
 |  Variable | Default  |  Comments |  
 |----------------------|----------------|-----------------------------------------------------------------|
@@ -62,8 +64,44 @@ finally you can run the playbook :
 registry.yml
 -----------
     
+|  Variable | Default  |  Comments |  
+|----------------------|----------------|-----------------------------------------------------------------|
+|common_name_registry| XXXXXXX| common name for the self signed certificate. need to be the hostname of the registry server |
+|name_org| XXXXXXX| name of the organisation for the certificate|
+|path_prvkey| /etc/pki/tls/private/registry.key| path to the private key|
+|path_csr | /etc/pki/tls/registry.csr| path to the csr file |
+|path_cert | /etc/pki/tls/registry.crt | path to the certificate |
+|directory_registry| /var/lib/registry | directory where the image will be kept |
+|path_auth | /etc/docker-distribution/dockerpasswd | path to  the http authentification  file |
+|passwd| XXXXXXX| password for htpasswd |
+|user_auth| XXXXXXX| username for the authetification|
    
-    
+first you need to complete the value for all the non defined variable shown here with XXXX
+
+       - vi role/registry/vars/main.yml
+       
+       - ansible-playbook registry.yml
+       
+       
+
+access-registry.yml
+-------------------
+
+|  Variable | Default  |  Comments |  
+|----------------------|----------------|-----------------------------------------------------------------|
+|ip_registry|xxxxxxx| ip address of the registry server only necessary if the dns vars is set to true|
+|cert_name|registry.crt| name of the certificat|
+|dns|true|set to false if you have a dns service. if true  it add the ip address of the registry server to the hosts file|
+
+first you need to complete the value for the non defined variable shown here with XXXX
+
+       - vi role/registry-hosts/vars/main.yml
+       
+       - ansible-playbook access-registry.yml
+       
+       
+now you can pull an image from your registry
+
     
     
 
@@ -72,23 +110,5 @@ registry.yml
     
 note to myself : you need to use inventory groups. Inventory grou can be really useful to run tasks only on the hosts you want. the docker-distribution(private-registry) need to be under the registry group and the docker machine under docker group
 
-Example 
-----------------
 
- example of how to use the ssh-keygen ans ssh :
-
-    - ssh-keygen -t rsa 
-    - ssh-copy-id root@ip_hosts
-    
- example of hosts file :
-    
-    [registry]
-    registry_ip or common_name 
-    [docker]
-    dockerVM_ip or common_name 
-    
- example of command to run the script :
- 
-    - ansible-playbook docker.yml
-    
 
