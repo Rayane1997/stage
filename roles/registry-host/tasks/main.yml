@@ -15,4 +15,4 @@
       - name: copy file
         copy:
          src: registry.crt
-         dest: '/etc/docker/certs.d/docker-distributions:5000/registry.crt'
+         dest: /etc/docker/certs.d/docker-distributions:5000/registry.crt
