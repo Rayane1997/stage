@@ -14,7 +14,7 @@ docker.yml : install docker
 
 registy.yml : configure the registry
 
-access_registry.yml : configure the acces to the registry using registry-hosts roles
+access_registry.yml : configure the acces to the registry 
 
 
 
