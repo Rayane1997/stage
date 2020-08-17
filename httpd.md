@@ -7,7 +7,7 @@ first create a directory
 
      mkdir http
      
-then create the dockerfile. the docker file build your image adding layer
+then create the dockerfile. the dockerfile build a new image by adding layer to the image we decide to use.
      
      vi http/Dockerfile
      
@@ -16,9 +16,10 @@ then create the dockerfile. the docker file build your image adding layer
      COPY    index.html /usr/local/apache2/htdocs/
      VOLUME /usr/docker
   
-  
-once the docker file is created you can build your image and create a personalized message in the index file. but before enter in the directory
-  
+   
+once the docker file is created you can build your image and create a personalized message in the index file. 
+the file index.html need to be on the same directory as the Dockerfile elsewhere you need to put theentire path.
+
         cd http
         echo " bonjour , le conteneur est en marche"  > index.html
         Docker build -t http:pull .
