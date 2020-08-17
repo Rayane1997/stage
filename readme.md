@@ -2,7 +2,7 @@ Docker deployement with ansible
 =================================
 
 This project provides the following roles :
-
++ create-lvm : creation of a dedicated lvm
 + preparation : Installation of docker on remote virtual machine/servers
 + deploiement : Installation of docker engineChange the docker directory
 + registry : configuration of a private registry 
@@ -42,6 +42,18 @@ once all of that is done you can run the ansible playbook. there are 3.
     
 from here i will assume that you're already int the git directory named stage
 
+LVM creation
+-------------
+
+the 2 first playbook start by creating a dedicated lvm 
+
+|  Variable | Default  |  Comments |  
+|----------------------|----------------|-----------------------------------------------------------------|
+| directory_docker | /var/lib/docker | where the docker directory need to be installed|
+| mount_point  |    / |  where the directory docker is mount (you can use a df -h /path_to_docker-directory/ to see where it's mount)  |
+| espace_disk |     1   |  minimum  free disk space on the docker directory. image can take rapdily a lot of space. to avoid to avoid any inconveniance set up the var to at least 1 gb  |
+
+
 docker.yml 
 ----------
 
@@ -50,7 +62,7 @@ the first playbook to run is the docker.yml. the playbook install docker on the 
 |  Variable | Default  |  Comments |  
 |----------------------|----------------|-----------------------------------------------------------------|
 | directory_docker | /var/lib/docker | where the docker directory need to be installed|
-| mount_on  |    / |  where the directory docker is mount (you can use a df -h /path_to_docker-directory/ to see where it's mount)  |
+| mount_point  |    / |  where the directory docker is mount (you can use a df -h /path_to_docker-directory/ to see where it's mount)  |
 | espace_disk |     1   |  minimum  free disk space on the docker directory. image can take rapdily a lot of space. to avoid to avoid any inconveniance set up the var to at least 1 gb  |
 
 if neccesarry change the vars:
