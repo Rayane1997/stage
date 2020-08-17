@@ -3,7 +3,8 @@
           user: root
           become: true
           hosts: docker
-          roles:
+          roles:    
+              - { role: create-lvm,  when:  mount_point not in (ansible_mounts | selectattr( "mount") |map(attribute= "mount") | list )}
               - preparation      
               - deploiement
           

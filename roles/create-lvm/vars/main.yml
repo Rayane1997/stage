@@ -1,0 +1,9 @@
+---
+# vars file for preparation
+
+
+
+        mount_point: /data-docker
+        physical_device: /dev/sdb
+        volumegroup_name: docker00
+        lv_name: test

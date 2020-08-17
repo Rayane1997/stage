@@ -4,5 +4,6 @@
           become: true
           hosts: registry
           roles:
+           - { role: create-lvm,  when:  mount_point not in (ansible_mounts | selectattr( "mount") |map(attribute= "mount") | list )}
            - registry
           

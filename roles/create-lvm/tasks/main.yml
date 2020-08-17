@@ -1,0 +1,28 @@
+---
+        - name: volume group creation
+          lvg:
+                  vg: "{{volumegroup_name}}"
+                  pvs: "{{physical_device}}"
+
+        - name: creation lvm 
+          lvol:
+                  vg: "{{volumegroup_name}}"
+                  lv: "{{lv_name}}"
+                  size: 100%VG
+
+        - name: create file system
+          filesystem:
+                  fstype: ext4
+                  dev: "/dev/{{volumegroup_name}}/{{lv_name}}"
+
+
+        - name: mount lv 
+          mount:
+                  name: "{{mount_point}}"
+                  src: "/dev/{{volumegroup_name}}/{{lv_name}}"
+                  fstype: ext4
+                  state: mounted
+
+
+
+

@@ -3,6 +3,6 @@
 
 
 
-        mount_on: /data-docker
+        mount_point: /data-docker-registry
         espace_disk: 1
         directory_docker: /data-docker/docker
