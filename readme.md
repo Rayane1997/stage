@@ -46,11 +46,12 @@ LVM creation
 -------------
 
 the 2 first playbook start by creating a dedicated lvm. Here are the variables necessary for the creation.
+the lvm created will bee used to contain the docker data in the docker machines and the images, necessary to run containers, for the registry
 
 |  Variable | Default  |  Comments |  
 |----------------------|----------------|-----------------------------------------------------------------|
-| mount_point  |  /data-docker |   where the directory  is mount  |
-| physical_device | /dev/sdb |  physical devices used  |
+| mount_point  |  /data-docker |   directory where the docker data or the images will be held  |
+| physical_device | /dev/sdb |  free disk used to contained the data   |
 |volumegroup_name| docker00 | name of the volume group|
 |lv_name| test | logical volume name|
 
