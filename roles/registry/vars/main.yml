@@ -10,6 +10,5 @@
         path_auth: /etc/docker-distribution/dockerpasswd
         name_org: stage
         user_auth: dock
-        directory_registry: /data-docker-registry
-        
+        directory_registry: /data-docker
 
