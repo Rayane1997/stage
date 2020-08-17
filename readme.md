@@ -45,7 +45,7 @@ from here i will assume that you're already int the git directory named stage
 LVM creation
 -------------
 
-the 2 first playbook start by creating a dedicated lvm 
+the 2 first playbook start by creating a dedicated lvm. Here are the variables necessary for the creation.
 
 |  Variable | Default  |  Comments |  
 |----------------------|----------------|-----------------------------------------------------------------|
@@ -86,7 +86,7 @@ finally you can run the playbook :
 registry.yml
 -----------
   
- check the lvm creation 
+ before your run the playbook don't forget to check the lvm creation's variables. 
     
 |  Variable | Default  |  Comments |  
 |----------------------|----------------|-----------------------------------------------------------------|
