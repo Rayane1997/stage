@@ -49,9 +49,16 @@ the 2 first playbook start by creating a dedicated lvm
 
 |  Variable | Default  |  Comments |  
 |----------------------|----------------|-----------------------------------------------------------------|
-| directory_docker | /var/lib/docker | where the docker directory need to be installed|
-| mount_point  |    / |  where the directory docker is mount (you can use a df -h /path_to_docker-directory/ to see where it's mount)  |
-| espace_disk |     1   |  minimum  free disk space on the docker directory. image can take rapdily a lot of space. to avoid to avoid any inconveniance set up the var to at least 1 gb  |
+| mount_point  |  /data-docker |   where the directory  is mount  |
+| physical_device | /dev/sdb |  physical devices used  |
+|volumegroup_name| docker00 | name of the volume group|
+|lv_name| test | logical volume name|
+
+if neccesarry change the vars:
+
+    - vi roles/create_lvm/vars/main.yml
+    
+
 
 
 docker.yml 
@@ -61,13 +68,16 @@ the first playbook to run is the docker.yml. the playbook install docker on the 
     
 |  Variable | Default  |  Comments |  
 |----------------------|----------------|-----------------------------------------------------------------|
-| directory_docker | /var/lib/docker | where the docker directory need to be installed|
-| mount_point  |    / |  where the directory docker is mount (you can use a df -h /path_to_docker-directory/ to see where it's mount)  |
-| espace_disk |     1   |  minimum  free disk space on the docker directory. image can take rapdily a lot of space. to avoid to avoid any inconveniance set up the var to at least 1 gb  |
+| directory_docker | /data-docker/docker | where the docker directory need to be installed|
+| mount_point  |  /data-docker |  where the directory docker is mount (you can use a df -h /path_to_docker-directory/ to see where it's mount)  |
+| espace_disk  |   1   |  minimum  free disk space on the docker directory. image can take rapdily a lot of space. to avoid to avoid any inconveniance set up the var to at least 1 gb  |
+
+note: we want the directory docker to be installed on the lvm so be carreful where you install  the directory_docker (check the LVM creation) 
 
 if neccesarry change the vars:
 
     - vi roles/preparation/vars/main.yml
+    - vi roles/deploiement/vars/main.yml
     
 finally you can run the playbook :
     
@@ -75,6 +85,8 @@ finally you can run the playbook :
 
 registry.yml
 -----------
+  
+ check the lvm creation 
     
 |  Variable | Default  |  Comments |  
 |----------------------|----------------|-----------------------------------------------------------------|
