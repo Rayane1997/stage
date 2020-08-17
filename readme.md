@@ -104,6 +104,8 @@ first you need to complete the value for all the non defined variable shown here
 
        - vi role/registry/vars/main.yml
        
+then run the playbook :
+
        - ansible-playbook registry.yml
        
        
@@ -120,11 +122,12 @@ access-registry.yml
 first you need to complete the value for the non defined variable shown here with XXXX
 
        - vi role/registry-hosts/vars/main.yml
-       
+then run the playbook :
+
        - ansible-playbook access-registry.yml
        
        
-now you can pull an image from your registry
+now you can pull and push  images from your registry. to see how you can do it read the http.md
 
     
     
