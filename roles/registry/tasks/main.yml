@@ -8,6 +8,8 @@
            fail_msg: "this vm is not an centos 7 docker-distribution is not availible on centos8"
            that:
             ({{ansible_distribution_major_version}} == 7 )
+            
+            
         - name: " ==docker distribution"
           yum:
            name: [ epel-release, firewalld, docker-distribution]
@@ -18,7 +20,7 @@
            name: [ python2-passlib, httpd-tools, python-cryptography,py-bcrypt]
            state: present
            
-        - name: Check that the somefile.conf exists
+        - name: Check that the certificats exist exists
           stat:
            path: "{{path_cert}}"
           register: stat_result
