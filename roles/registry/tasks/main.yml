@@ -1,10 +1,6 @@
 ---
 
 
-        - name: mount disk
-          include_tasks: roles/preparation/tasks/lvm.yml
-          when:  directory_registry not in (ansible_mounts | selectattr( "mount") |map(attribute= "mount") | list ) #affiche les facts relatifs au differents 
-
           
         - name: "centos7==installation"
           assert:
