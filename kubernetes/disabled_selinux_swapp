@@ -1,10 +1,10 @@
 #!/bin/sh
 
-setenforce 0
-sed -i --follow-symlinks 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
+sudo setenforce 0
+sudo sed -i --follow-symlinks 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
 
 
-swapoff -a
-sed -i '2s/^/#/' /etc/fstab 
+sudo swapoff -a
+sudo sed -i '2s/^/#/' /etc/fstab 
 
 reboot
