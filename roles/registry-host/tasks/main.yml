@@ -8,11 +8,11 @@
          
       - name: Create a directory 
         file:
-         path: '/etc/docker/certs.d/docker-distributions:5000'
+         path: '/etc/docker/certs.d/docker-distributions.stage.local:5000'
          state: directory
          mode: '0755'
          
       - name: copy file
         copy:
          src: registry.crt
-         dest: /etc/docker/certs.d/docker-distributions:5000/registry.crt
+         dest: /etc/docker/certs.d/docker-distributions.stage.local:5000/registry.crt
