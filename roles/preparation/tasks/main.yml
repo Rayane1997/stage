@@ -1,8 +1,7 @@
 ---
            
            - name: Gathering facts
-             setup:
-           
+             setup: 
            
            - name: "validate partitions"    #verifie si il y a assez d'espace disponible disponible 
              assert:                        # ce module s'assure qu'une condition est remplis    
