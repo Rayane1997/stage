@@ -1,3 +1,5 @@
-# mkdir -p /HOME/demo/.kube
-# cp -i /etc/kubernetes/admin.conf /HOME/demo/.kube/config
-# chown demo:demo /HOME/.kube/config
+#!/bin/bash
+
+mkdir -p /HOME/demo/.kube
+sudo cp -i /etc/kubernetes/admin.conf /HOME/demo/.kube/config
+sudo chown demo:demo /HOME/.kube/config
