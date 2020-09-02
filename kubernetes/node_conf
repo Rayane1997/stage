@@ -1,4 +1,7 @@
- 
+#!/bin/bash
+
+swapoff -a
+sed -i '2s/^/#/' /etc/fstab 
  
  setenforce 0
  sed -i --follow-symlinks 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
