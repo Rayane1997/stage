@@ -1,0 +1,28 @@
+$TTL 86400
+@ IN SOA docker-distributions.stage.local. root.stage.local. (
+	2016042112 ; serial
+	604800; refresh
+	86400; retry
+	2149200 ; expiry
+	604800 ; Minimum TTL
+)
+;Name Server Information
+ IN NS docker-distributions.stage.local.
+
+;IP address of Name Server
+docker-distributions.stage.local. IN A 192.168.234.95
+
+;A records 
+docker-distributions.stage.local. IN A 192.168.234.95
+master.stage.local. IN A 192.168.235.18
+bootstrap.stage.local. IN A 192.168.235.208
+worker1.stage.local.  IN A 192.168.235.167
+worker2.stage.local.  IN A 192.168.234.106
+
+
+
+
+
+
+
+
