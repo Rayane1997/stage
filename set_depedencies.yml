@@ -1,0 +1,6 @@
+ - name: "deployer docker"
+          user: root
+          become: true
+          hosts: docker
+          roles:    
+              - kubernetes-init
