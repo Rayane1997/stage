@@ -2,4 +2,5 @@
 # vars file for registry-host
 ip_registry: 192.168.234.95
 cert_name: registry.crt
+registry_fqdn: docker-distribution.stage.local
 dns: True
