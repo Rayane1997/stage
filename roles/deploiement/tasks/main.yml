@@ -10,13 +10,13 @@
 
            - name: "creation daemon.json "     
              file:
-              path: "/etc/docker/daemon.json"      # on donne le path
-              state: touch                         #on cree le fichier
+              path: "/etc/docker/daemon.json"     
+              state: touch                         
 
            - name: "change path "
              lineinfile:
-              path: /etc/docker/daemon.json                    #on modifie le document en y inserant
-              line: ' { "data-root" : "{{directory_docker}}" }' # la nouvelle directory
+              path: /etc/docker/daemon.json                  
+              line: ' { "data-root" : "{{directory_docker}}", "exec-opts": ["native.cgroupdriver=systemd"], "log-driver": "json-file", "log-opts": {"max-size": "100m"},}'
 
 
            - name: install docker
