@@ -2,4 +2,4 @@
           user: root
           become: true
           roles:    
-              - kubernetes-mqster
+              - kubernetes-master
