@@ -8,6 +8,16 @@
      selinux:
        state: disabled
 
+   - name: disable swap
+     shell: swapoff -a
+     
+
+   - name: remove swap from fstab
+     lineinfile:
+      path: '/etc/fstab'
+      regexp: '\sswap\s'
+      state: 'absent'
+
 
    - name: ensure net.bridge.bridge-nf-call-iptables is set to 1
      sysctl:
