@@ -31,7 +31,8 @@
            - name: start docker
              service:
               name: docker 
-              state: started 
+              state: started
+              enabled: yes
             
 
 
