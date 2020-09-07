@@ -2,7 +2,7 @@
 # tasks file for kubernetes-init
 
    - name: disable SELinux
-     command: setenforce 0
+     shell: 'setenforce 0'
 
    - name: disable SELinux on reboot
      selinux:
@@ -15,7 +15,7 @@
    - name: remove swap from fstab
      lineinfile:
       path: '/etc/fstab'
-      regexp: '\sswap\s'
+      regexp: 'swap'
       state: 'absent'
 
 

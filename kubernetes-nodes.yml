@@ -1,5 +1,8 @@
- - name: "deployer docker"
+---
+
+        - name: "deployer kubernetes"
+          hosts: workers
           user: root
-          become: true
-          roles:    
-              - kubernetes-init
+          roles:
+           - kubernetes-install-worker
+              

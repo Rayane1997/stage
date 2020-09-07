@@ -1,25 +1,60 @@
 ---
 # tasks file for kubernetes-install-master
+#
+   
+    - name: copy file
+      copy:
+       src: kuber_firewall.xml
+       dest: /etc/firewalld/services/kubernetes_firewall.xml
 
-    - name: initialize the cluster
-      shell: kubeadm init --pod-network-cidr=10.244.0.0/16 
+    - name : "reload firewalld"
+      service:
+       name: firewalld
+       state: reloaded
+
+    - name: set firewall
+      command: firewall-cmd --permanent --add-service=kubernetes_firewall
+
+    - name : "reload firewalld"
+      service:
+       name: firewalld
+       state: reloaded
+
+      #  - name: initialize the cluster
+      #  shell: kubeadm init --pod-network-cidr=10.244.0.0/16 
     
+    - name: Check that the dir exist exists
+      become_user: demo
+      stat:
+       path: $HOME/.kube
+      register: stat_result
+
     - name: create .kube directory
-      become: yes
       become_user: demo
       file:
         path: $HOME/.kube
         state: directory
         mode: 0755
+      when: not stat_result.stat.exists
 
     - name: copy admin.conf to user's kube config
+      become: yes
       copy:
         src: /etc/kubernetes/admin.conf
-        dest: /home/centos/.kube/config
+        dest: /home/demo/.kube/config
         remote_src: yes
         owner: demo
 
     - name: install Pod network
-      become: yes
       become_user: demo
-      shell: kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/a70459be0084506e4ec919aa1c114638878db11b/Documentation/kube-flannel.yml 
+      shell: 'kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml'
+
+
+    - name: get join command
+      become_user: demo
+      shell: kubeadm token create --print-join-command
+      register: join_command 
+
+    - name: Copy join command to local file
+      become: false
+      local_action: copy content={{ join_command.stdout_lines[0] }} dest=roles/kubernetes-install-worker/files/join-command      

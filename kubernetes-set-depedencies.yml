@@ -1,4 +1,6 @@
- - name: "deployer docker"
+---
+
+        - name: "deployer docker"
           user: root
           become: true
           hosts: docker

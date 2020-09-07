@@ -1,5 +1,7 @@
- - name: "deployer docker"
+---     
+        - name: "deployer docker"
+          hosts: master
           user: root
           become: true
           roles:    
-              - kubernetes-master
+              - kubernetes-install-master

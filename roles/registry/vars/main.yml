@@ -2,7 +2,7 @@
 
 # vars file for registre
 
-        common_name_registry: docker-distributions
+        common_name_registry: docker-distribution.stage.local
         passwd: Rayane1997
         path_prvkey: /etc/pki/tls/private/registry.key
         path_csr: /etc/pki/tls/registry.csr

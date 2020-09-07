@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+ <short>oranet</short>
+ <description>Oracle Listener Service</description>
+ <port protocol="tcp" port="6783" />
+ <port protocol="tcp" port="30000-32767" />
+ <port protocol="tcp" port="10250" />
+ <port protocol="tcp" port="10255" />
+</service>
