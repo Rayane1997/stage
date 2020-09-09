@@ -11,7 +11,14 @@
         state: reloaded
 
      - name: set firewall
-       command: firewall-cmd --permanent --add-service=kubernetes_firewall
+       shell: firewall-cmd --permanent --add-service=kubernetes_firewall
+
+
+     - name : "reload firewalld"
+       service:
+        name: firewalld
+        state: reloaded
+
 
      - name: Copy the join command to server location
        copy: src=join-command dest=/tmp/join-command.sh mode=0777

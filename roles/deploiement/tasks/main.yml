@@ -16,7 +16,7 @@
            - name: "change path "
              lineinfile:
               path: /etc/docker/daemon.json                  
-              line: ' { "data-root" : "{{directory_docker}}", "exec-opts": ["native.cgroupdriver=systemd"], "log-driver": "json-file", "log-opts": {"max-size": "100m"},}'
+              line: ' { "data-root" : "{{directory_docker}}", "exec-opts": ["native.cgroupdriver=systemd"], "log-driver": "json-file", "log-opts": {"max-size": "100m"}}'
 
 
            - name: install docker

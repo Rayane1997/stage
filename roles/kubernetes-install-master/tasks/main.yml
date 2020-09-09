@@ -20,8 +20,8 @@
        name: firewalld
        state: reloaded
 
-      #  - name: initialize the cluster
-      #  shell: kubeadm init --pod-network-cidr=10.244.0.0/16 
+    - name: initialize the cluster
+      shell: kubeadm init --pod-network-cidr=10.244.0.0/16 
     
     - name: Check that the dir exist exists
       become_user: demo
