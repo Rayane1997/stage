@@ -7,6 +7,7 @@ This project provides the following roles :
 + deploiement : Installation of docker engineChange the docker directory
 + registry : configuration of a private registry 
 + registry_hosts : configure the hosts to comunicate with the docker-distribution
++ kubernetes-init : set dependencies for kubernetes
 
 Supports only centos and redhat operating systems
 
@@ -15,6 +16,8 @@ docker.yml : install docker
 registy.yml : configure the registry
 
 access_registry.yml : configure the acces to the registry 
+
+kubernetes-set-depedencies.yml : set depedencies for kubernetes
 
 
 
@@ -35,8 +38,13 @@ modified the host file /etc/ansible/hosts , add the ip addresses of the remote h
 
          [registry]
          registry_ip or common_name 
-         [docker]
-         dockerVM_ip or common_name
+         [master]
+         masterVM_ip or common_name
+         [worker]
+         workerVM_ip or common_name
+         [docker:children]
+         master
+         worker
     
 once all of that is done you can run the ansible playbook. there are 3.
     
@@ -133,28 +141,41 @@ now you can pull and push  images from your registry. to see how you can do it r
 kubernetes-set-depedencies.yml
 -------------------
 
+this roles set all depencies in order to set up the kubernetes cluster. all you need to do is run the playbook.
+
+run the playbook :
+
+       - ansible-playbook kubernetes-set-depedencies.yml
+       
+
+kubernetes-master.yml
+-------------------
+
+this roles configure the master and copy the command needed for the workers to join the cluster 
+
 |  Variable | Default  |  Comments |  
 |----------------------|----------------|-----------------------------------------------------------------|
-|ip_registry|xxxxxxx| ip address of the registry server only necessary if the dns vars is set to true|
-|cert_name|registry.crt| name of the certificat|
-|dns|true|set to false if you have a dns service. if true  it add the ip address of the registry server to the hosts file|
+|user|xxxxxxx| user to have access to kubectl in order to run command |
 
 first you need to complete the value for the non defined variable shown here with XXXX
 
-       - vi role/registry-hosts/vars/main.yml
+       - vi role/kubernetes-install-master/vars/main.yml
 then run the playbook :
 
-       - ansible-playbook access-registry.yml
-       
+       - ansible-playbook kubernetes-master.yml
+
+
+
+kubernetes-nodes.yml
+-------------------
+this roles set up the firewall and then run the command to join the cluster. all you need to do is run the playbook.
+
+run the playbook :
+
+       - ansible-playbook kubernetes-nodes.yml
 
 
     
     
-
-
-    
-    
-note to myself : you need to use inventory groups. Inventory grou can be really useful to run tasks only on the hosts you want. the docker-distribution(private-registry) need to be under the registry group and the docker machine under docker group
-
 
 
