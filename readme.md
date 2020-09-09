@@ -130,6 +130,24 @@ then run the playbook :
        
 now you can pull and push  images from your registry. to see how you can do it read the http.md
 
+kubernetes-set-depedencies.yml
+-------------------
+
+|  Variable | Default  |  Comments |  
+|----------------------|----------------|-----------------------------------------------------------------|
+|ip_registry|xxxxxxx| ip address of the registry server only necessary if the dns vars is set to true|
+|cert_name|registry.crt| name of the certificat|
+|dns|true|set to false if you have a dns service. if true  it add the ip address of the registry server to the hosts file|
+
+first you need to complete the value for the non defined variable shown here with XXXX
+
+       - vi role/registry-hosts/vars/main.yml
+then run the playbook :
+
+       - ansible-playbook access-registry.yml
+       
+
+
     
     
 
