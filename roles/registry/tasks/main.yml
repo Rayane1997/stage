@@ -78,6 +78,7 @@
           service:
            name: docker-distribution 
            state: started
+           enabled: yes
 
         - name: "copy certificate"
           fetch:
