@@ -3,12 +3,10 @@
 # vars file for registre
 
         common_name_registry: docker-distribution.stage.local
-        passwd: Rayane1997
         path_prvkey: /etc/pki/tls/private/registry.key
         path_csr: /etc/pki/tls/registry.csr
         path_cert: /etc/pki/tls/registry.crt
         path_auth: /etc/docker-distribution/dockerpasswd
         name_org: stage
-        user_auth: dock
         directory_registry: /data-docker
 

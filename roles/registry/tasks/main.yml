@@ -2,6 +2,8 @@
 
 
           
+        - include_vars: registry_login.yml
+
         - name: "centos7==installation"
           assert:
            success_msg: "proceed to installation "
