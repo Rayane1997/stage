@@ -106,8 +106,8 @@ registry.yml
 |path_cert | /etc/pki/tls/registry.crt | path to the certificate |
 |directory_registry| /var/lib/registry | directory where the image will be kept |
 |path_auth | /etc/docker-distribution/dockerpasswd | path to  the http authentification  file |
-|passwd| XXXXXXX| password for htpasswd |
-|user_auth| XXXXXXX| username for the authetification|
+|passwd| Rayane1997| password for htpasswd |
+|user_auth| dock | username for the authetification|
    
 first you need to complete the value for all the non defined variable shown here with XXXX
 
@@ -115,7 +115,9 @@ first you need to complete the value for all the non defined variable shown here
        
 then run the playbook :
 
-       - ansible-playbook registry.yml
+       - ansible-playbook registry.yml --ask-vault-pass
+       
+       password for vault ==> stage123
        
        
 
@@ -162,7 +164,7 @@ first you need to complete the value for the non defined variable shown here wit
        - vi role/kubernetes-install-master/vars/main.yml
 then run the playbook :
 
-       - ansible-playbook kubernetes-master.yml
+       - ansible-playbook kubernetes-master.yml 
 
 
 
