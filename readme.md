@@ -48,7 +48,15 @@ modified the host file /etc/ansible/hosts , add the ip addresses of the remote h
     
 once all of that is done you can run the ansible playbook. there are 3.
     
-from here i will assume that you're already int the git directory named stage
+from here i will assume that you're already in the git directory named stage
+
+requirement
+-------------
+5 vm : 4 centos(or redhat) 8 and 1 centos(or redhat) 7
+
+the vm running on centos 8 will be used as our private registry and can also serve as a dns server.
+we need 3 vms for the cluster kubernetes one master and two worker and finally a bootsrap to deploy our ansible playbook
+
 
 LVM creation
 -------------
