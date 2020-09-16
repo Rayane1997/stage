@@ -53,7 +53,7 @@ modified the host file /etc/ansible/hosts , add the ip addresses of the remote h
          master
          worker
     
-once all of that is done you can run the ansible playbook. there are 3.
+once all of that is done you can run the ansible playbook. there are 6.
     
 from here i will assume that you're already in the git directory named stage
 
