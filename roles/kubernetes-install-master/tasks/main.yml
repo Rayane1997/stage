@@ -12,8 +12,12 @@
        name: firewalld
        state: reloaded
 
-    - name: set firewall
-      command: firewall-cmd --permanent --add-service=kubernetes_firewall
+    - name: Manage  firewalld service
+      firewalld:
+       service: kubernetes_firewall
+       permanent: yes
+       immediate: yes
+       state: enabled
 
     - name : "reload firewalld"
       service:
