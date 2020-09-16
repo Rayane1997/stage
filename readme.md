@@ -23,8 +23,8 @@ requirement
 -------------
 5 vm : 4 centos(or redhat) 8 and 1 centos(or redhat) 7
 
-the vm running on centos 8 will be used as our private registry and can also serve as a dns server.
-we need 3 vms for the cluster kubernetes one master and two worker and finally a bootsrap to deploy our ansible playbook
+the vm running on centos 7 will be used as our private registry and can also serve as a dns server.
+we need 3 vms for the cluster kubernetes one master and two worker and finally a bootsrap to deploy our ansible playbook.
 
 free disk availible on each vm
 
