@@ -119,7 +119,7 @@ registry.yml
    
 first you need to complete the value for all the non defined variable shown here with XXXX
 
-       - vi role/registry/vars/main.yml
+       - vi roles/registry/vars/main.yml
        
 then run the playbook :
 
@@ -140,7 +140,7 @@ access-registry.yml
 
 first you need to complete the value for the non defined variable shown here with XXXX
 
-       - vi role/registry-hosts/vars/main.yml
+       - vi roles/registry-hosts/vars/main.yml
 then run the playbook :
 
        - ansible-playbook access-registry.yml
@@ -169,7 +169,7 @@ this roles configure the master and copy the command needed for the workers to j
 
 first you need to complete the value for the non defined variable shown here with XXXX
 
-       - vi role/kubernetes-install-master/vars/main.yml
+       - vi roles/kubernetes-install-master/vars/main.yml
 then run the playbook :
 
        - ansible-playbook kubernetes-master.yml 
