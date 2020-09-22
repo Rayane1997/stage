@@ -10,12 +10,12 @@
         name: firewalld
         state: reloaded
 
-    - name: Manage  firewalld service
-      firewalld:
-       service: kubernetes_firewall
-       permanent: yes
-       immediate: yes
-       state: enabled
+     - name: Manage  firewalld service
+       firewalld:
+        service: kubernetes_firewall
+        permanent: yes
+        immediate: yes
+        state: enabled
 
      - name : "reload firewalld"
        service:
