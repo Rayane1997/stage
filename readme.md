@@ -53,6 +53,12 @@ modified the host file /etc/ansible/hosts , add the ip addresses of the remote h
          master
          worker
     
+
+you can also create it on youre directory. if you do it this way you'll nedd to add -i path_to_file 
+
+        - ansible-playbook docker.yml -i hosts
+
+
 once all of that is done you can run the ansible playbook. there are 6.
     
 from here i will assume that you're already in the git directory named stage
