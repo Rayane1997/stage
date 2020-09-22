@@ -27,6 +27,20 @@
     - name: initialize the cluster
       shell: kubeadm init --pod-network-cidr=10.244.0.0/16 
     
+    - name: verified  user exist
+      getent:
+       database: passwd
+       key: "{{ user }}"
+      register: getent_passwd
+   
+    
+    - user:
+        name: "{{user}}"
+        shell: /bin/bash
+        groups: docker ,sudo
+        append: yes
+      when: getent_passwd.stderr != ""
+          
     - name: Check that the dir exist exists
       become_user: "{{ user }}"
       stat:
