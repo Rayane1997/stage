@@ -30,16 +30,24 @@
    
     - name: collect all user
       getent:
-              database: passwd   
+       database: passwd   
     
     - user:
        name: "{{user}}"
        shell: /bin/bash
        groups: docker , wheel
-       password: stage123
+       password: "{{password}}"
        append: yes
       when:
        -  user not in (getent_passwd.keys() | list)
+       
+       
+    - name: adding existing user '{{ user }}' to group sudo
+      user:
+       name: '{{ user }}'
+       groups: docker , wheel
+       append: yes
+      when: user in (getent_passwd.keys() | list)
 
           
     - name: Check that the dir exist exists
