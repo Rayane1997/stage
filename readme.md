@@ -178,13 +178,22 @@ this roles configure the master and copy the command needed for the workers to j
 |  Variable | Default  |  Comments |  
 |----------------------|----------------|-----------------------------------------------------------------|
 |user|xxxxxxx| user to have access to kubectl in order to run command |
+|password|xxxxxxx| password for the user only if the user need to be created |
 
 first you need to complete the value for the non defined variable shown here with XXXX
 
        - vi roles/kubernetes-install-master/vars/main.yml
+       
+because this playbook contain a password the vars file need to be crypted:
+
+       - ansible-vault encrypt roles/kubernetes-install-master/vars/main.yml
+         then enter a password 
+         
+         don't forget the password you'll need it to run your playbook
+         
 then run the playbook :
 
-       - ansible-playbook kubernetes-master.yml 
+       - ansible-playbook kubernetes-master.yml --ask-vault-pass
 
 
 
