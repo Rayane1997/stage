@@ -8,6 +8,8 @@ This project provides the following roles :
 + registry : configuration of a private registry 
 + registry_hosts : configure the hosts to comunicate with the docker-distribution
 + kubernetes-init : set dependencies for kubernetes
++ kubernetes-install-master : set up all the requirement to initialize the cluster and then copy the join command in a file
++ kubernetes-install-worker : set the firewall rules for the worker and then run the join command 
 
 Supports only centos and redhat operating systems
 
@@ -18,6 +20,10 @@ registy.yml : configure the registry
 access_registry.yml : configure the acces to the registry 
 
 kubernetes-set-depedencies.yml : set depedencies for kubernetes
+
+kubernetes-master.yml : init the cluster
+
+kubernetes-nodes.yml : join the nodes to the cluster
 
 requirement
 -------------
@@ -54,7 +60,7 @@ modified the host file /etc/ansible/hosts , add the ip addresses of the remote h
          worker
     
 
-you can also create it on youre directory. if you do it this way you'll nedd to add -i path_to_file 
+you can also create it on your directory. if you do it this way you'll nedd to add -i path_to_file when ever you run an ansible playbook 
 
         - ansible-playbook docker.yml -i hosts
 
