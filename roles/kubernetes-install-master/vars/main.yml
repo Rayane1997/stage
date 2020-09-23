@@ -1,4 +1,5 @@
 ---
 # vars file for kubernetes-install-master
 
-user: mode
+user: demo
+password: stage123
