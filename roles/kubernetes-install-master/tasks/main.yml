@@ -24,8 +24,8 @@
        name: firewalld
        state: reloaded
 
-       #    - name: initialize the cluster
-       #      shell: kubeadm init --pod-network-cidr=10.244.0.0/16 
+    - name: initialize the cluster
+      shell: kubeadm init --pod-network-cidr=10.244.0.0/16 
     
    
     - name: collect all user
@@ -33,11 +33,11 @@
               database: passwd   
     
     - user:
-        name: "{{user}}"
-        shell: /bin/bash
-        groups: docker , wheel
-        #        password: stage123
-        append: yes
+       name: "{{user}}"
+       shell: /bin/bash
+       groups: docker , wheel
+       password: stage123
+       append: yes
       when:
        -  user not in (getent_passwd.keys() | list)
 
