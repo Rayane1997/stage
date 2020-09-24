@@ -32,7 +32,8 @@
       getent:
        database: passwd   
     
-    - user:
+    - name: creating user '{{ user }}' 
+      user:
        name: "{{user}}"
        shell: /bin/bash
        groups: docker , wheel
