@@ -11,7 +11,7 @@ This project provides the following roles :
 + kubernetes-install-master : set up all the requirement to initialize the cluster and then copy the join command in a file
 + kubernetes-install-worker : set the firewall rules for the worker and then run the join command 
 
-Supports only centos and redhat operating systems
+**Supports only centos and redhat operating systems**
 
 docker.yml : install docker
 
