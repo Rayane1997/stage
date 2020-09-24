@@ -27,5 +27,4 @@
        copy: src=join-command dest=/tmp/join-command.sh mode=0777
 
      - name: Join the node to cluster
-       become_user: demo
        command: sh /tmp/join-command.sh
