@@ -6,7 +6,7 @@ first we need to set the firewall. The master communicates with the nodes using 
 |Protocol |	Direction	|Port Range |	Purpose |	Used By |
 |----------------------|----------------|-------------------|--------------------------------|--------------|
 | TCP | Inbound	| 10250 |	Kubelet API	| Self, Control plane|
-|TCP	|Inbound	|30000-32767	|NodePort |Services† |	All|
+|TCP	|Inbound	|30000-32767	|NodePort Services |	All|
 
 To set up the firewall i create a firewalld service from an xml file. The xml file is kept in the roles under the files directory.
 
