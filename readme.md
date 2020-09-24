@@ -65,7 +65,7 @@ you can also create it on your directory. if you do it this way you'll nedd to a
         - ansible-playbook docker.yml -i hosts
 
 
-once all of that is done you can run the ansible playbook. there are 6.
+once all of that is done you can run the ansible playbook. 
     
 from here i will assume that you're already in the git directory named stage
 
