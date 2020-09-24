@@ -2,7 +2,7 @@
 kubernetes-install-master
 ===========================
 
-**warning: this roles can be run just onced because he kubeadm init command can be used serveral time ( if the roles failed after the kubeadm init  you can delete the command from the task)
+**warning: this roles can be run just onced because he kubeadm init command can be used serveral time ( if the roles failed after the kubeadm init  you can delete the command from the task)**
 
 first we need to set the firewall. The master communicates with the nodes using several ports. 
 
